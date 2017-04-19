@@ -1,1 +1,2 @@
-# bash-batch-operations-on-files
+# bash-batch-operations-on-files 
+Some readme content
