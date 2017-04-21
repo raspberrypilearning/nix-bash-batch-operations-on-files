@@ -82,7 +82,7 @@ To begin with you're going to need some files to work with.
 	
 ## Manipulating strings.
 
-That last command was a little trivial, but you can do much more with batch operations. For instance, what if you wanted to change name of each of the files, so instead of being called `0.txt` for instance, they get called `0.md`.
+That last command was a little pointless, but you can do much more with batch operations. For instance, what if you wanted to change name of each of the files, so instead of being called `0.txt` for instance, they get called `0.md`.
 
 1. Try this command:
 
@@ -103,9 +103,9 @@ That last command was a little trivial, but you can do much more with batch oper
 
 1. You could now end something else onto the end of the string.
 
-~~~bash
-echo ${words%World)Moon
-~~~
+	~~~bash
+	echo ${words%World)Moon
+	~~~
 
 1. So the syntax `${f%.txt}.md` replaces all the `.txt` strings with `.md` strings. Incidently, if you use the `#` operator instead of the `%` it will remove a string from the start instead of the end.
 
