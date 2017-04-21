@@ -1,76 +1,81 @@
-# New project
+# Running batch operations on a files using bash
 
-Each project contains a set of directories for each language, you're set up now with an `en` directory that contains the necessary files to get you going.
+## What are batch operations
 
-* [meta.yml](#metayml)
-* [Steps - step_1.md, step_2.md, etc](#steps)
+Renaming a file using *bash* is fairly easy. You could use the `mv` command for instance.
 
+~~~bash
+mv original_file_name.txt new_file_name.txt
+~~~
 
-## meta.yml
+However, what if you needed to rename a thousand files?
 
-The `meta.yml` file sets lots of basic information for the project.
+A *batch* operation is when you use a command or a set of commands on multiple files.
 
-``` yml
-title: The title of the project
-hero_image: images/banner.png # The image used on the listing view
-subtitle: Project subtitle # Used on the listing view
-description: Project description # Used on the listing view
-published: false # A boolean - `true` or`false` - that controls whether the project will appear on the listing view
-steps: # A list of all the steps
-  - title: How to get started # Used as the sidebar title for the step
-    duration: 60 # Not used yet
-```
+## Basic batch operations.
 
-## Steps
+To begin with you're going to need some files to work with.
 
-* [Links](#links)
-* [Resources](#resources)
-* [Images](#images)
-* [Definitions](#definitions)
-* [Hints](#hints)
+1. To begin, open up a terminal and then create a new directory to hold the files.
 
-Project steps are written in the [Kramdown](https://kramdown.gettalong.org/) variety of markdown. There is a [quick reference guide](https://kramdown.gettalong.org/quickref.html) and [full syntax documentation](https://kramdown.gettalong.org/syntax.html).
+	~~~bash
+	mkdir batch_test
+	~~~
 
-### Links, resources & images
+1. Switch into the new directory
 
-See [kramdown documentation](https://kramdown.gettalong.org/quickref.html#links-and-images) for more details.
+	~~~bash
+	cd batch_test
+	~~~
 
-#### Links
+1. Now you can create 10 new empty text files with this simple command
 
-A [link](http://kramdown.gettalong.org) to the kramdown homepage.
+	~~~bash
+	touch {0..9}.txt
+	~~~
+	
+1. Type `ls` to see your new files. You should see the following.
 
-#### Resources
+	~~~bash
+	0.txt  10.txt  1.txt  2.txt  3.txt  4.txt  5.txt  6.txt  7.txt  8.txt  9.txt
+	~~~
+	
+1. Now that you have a bunch of files, you can have a go at your first basic batch operation. The first thing to try is something trivial. For instance, you can recreate the `ls` command so that;
+   - for every file in the directory,
+   - the name of the file is output to the terminal.
 
-A [link to a file in the resources directory](resources/worksheet.pdf){:download='filename.pdf'}. The download part will make the file automatically download rather than be rendered in the browser, the filename you'd like the file to be saved with is the second bit after the `=`. The `/slash learning` application will ensure the resource is available.
+1. The first part is to tell bash you want to operate on all files in the directory.
 
-#### Images
+	~~~bash
+	for f in *;
+	~~~
 
-![Banner image](images/banner.png) - the link text becomes the alternative text for the image. The `/slash learning` application will ensure the image is available.
+1. `f` will represent each file name in the directory one after another. Notice the `;` at the end of the line. Bash will ignore *cariage returns* so you need to use a `;` to seperate different commands.
 
-### Definitions
+1. Next you need to tell bash what to do with each file name. In this case you want to `echo` the file name to standard output.
 
-Definitions can be written using HTML abbreviations, which are a standard part of [kramdown](https://kramdown.gettalong.org/quickref.html#abbreviations)
+	~~~bash
+	do echo $f;
+	~~~
+	
+1. Here the `$` sign is used to state that you're talking about the variable `f`. Lastly you need to tell bash that you're done.
 
-```
-To do this you might require a variable or a two word definition.
+	~~~bash
+	done
+	~~~
 
-*[variable]: An object that has a name and stores a value.
+1. You can hit *enter* after each command if you like, and bash won't run the whole loop until you type `done`, so the command would look like this in your terminal window:
 
-*[two word]: Definitions are markdown, and can have [links](http://kramdown.gettalong.org) etc
-```
+	~~~bash
+	for f in *.txt;
+	> do echo $f;
+	> done
+	~~~
+	
+1. Alternately, as bash doesn't care about carriage returns, you can just type it all on one line:
 
-
-### Hints
-
-Still very much a work in progress, but here's how you could get one to work currently. The id `#hint-1` on the heading and the class `.hint-1` on the body must match up.
-
-```
-### Hint
-{: .hint-heading #hint-1 }
-
-Here's a hint of how to do this project. Just a change to force an update.
-{: .hint-content .hint-1 }
-
-And a little more text for the first hint.
-{: .hint-content .hint-1 }
-```
+	~~~bash
+	for f in *.txt; do echo $f; done
+	~~~
+	
+## More complex commands
