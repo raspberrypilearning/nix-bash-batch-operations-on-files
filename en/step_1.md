@@ -1,6 +1,6 @@
-# Running batch operations on a files using bash
+### Running batch operations on a files using bash
 
-## What are batch operations
+#### What are batch operations
 
 Renaming a file using *bash* is fairly easy. You could use the `mv` command for instance.
 
@@ -12,7 +12,7 @@ However, what if you needed to rename a thousand files?
 
 A *batch* operation is when you use a command or a set of commands on multiple files.
 
-## Basic batch operations.
+#### Basic batch operations.
 
 To begin with you're going to need some files to work with.
 
@@ -80,7 +80,7 @@ To begin with you're going to need some files to work with.
 	for f in *.txt; do echo $f; done
 	~~~
 	
-## Manipulating strings.
+#### Manipulating strings.
 
 That last command was a little pointless, but you can do much more with batch operations. For instance, what if you wanted to change name of each of the files, so instead of being called `0.txt` for instance, they get called `0.md`.
 
