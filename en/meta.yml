@@ -1,0 +1,12 @@
+title: Running batch operations on files
+hero_image: images/banner.png
+description: bash-batch-operations-on-files description
+original_url: 
+theme: cc-prototype
+duration: 1
+listed: false
+interests:
+technologies: "nix, bash"
+steps:
+  - title: Batch file operations
+
