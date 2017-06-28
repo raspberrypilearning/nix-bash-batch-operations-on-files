@@ -1,14 +1,10 @@
 title: Running batch operations on files
 hero_image: images/banner.png
-<<<<<<< HEAD
 description: bash-batch-operations-on-files description
-=======
-subtitle: bash-batch-operations-on-files subtitle
 description: How to run batch operations on files using bash
->>>>>>> 4f67008e32ea7d205cf64b3d8f5cb69e88d6c6e9
-original_url: https://codeclubprojects.org/en-GB/scratch/rock-band
+original_url:
 theme: cc-prototype
-published: false
+listed: false
 steps:
   - title: Batch file operations
 
