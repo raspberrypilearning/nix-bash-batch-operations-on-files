@@ -59,7 +59,7 @@ That last command was a little pointless, but you can do much more with batch op
 - Try this command:
 
 	```bash
-	for f in *.txt; do mv $f ${f%.txt}.md; done
+	for f in *.txt; do mv "$f" "${f%.txt}.md"; done
 	```
 
 - If you `ls` the contents of the directory, you'll see all the files have been renamed. So how did this work?
