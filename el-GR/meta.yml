@@ -1,0 +1,16 @@
+---
+title: Running batch operations on files
+hero_image: images/banner.png
+description: perform batch operation on files using *nix systems
+original_url:
+theme: cc-prototype
+duration: 1
+listed: false
+ingredient: true
+copyedit: true
+interests:
+technologies: "nix, bash"
+steps:
+  - 
+    title: Batch file operations
+
