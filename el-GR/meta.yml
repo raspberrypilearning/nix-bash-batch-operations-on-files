@@ -1,0 +1,15 @@
+---
+title: Εκτέλεση δεσμών ενεργειών σε αρχεία
+hero_image: images/banner.png
+description: εκτέλεσε δέσμες ενεργειών σε αρχεία που χρησιμοποιούν συστήματα *nix
+original_url:
+theme: cc-prototype
+duration: 1
+listed: false
+ingredient: true
+copyedit: true
+interests:
+technologies: "nix, bash"
+steps:
+  - title: Λειτουργίες αρχείου δέσμης ενεργειών
+
