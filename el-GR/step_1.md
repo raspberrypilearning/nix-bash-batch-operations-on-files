@@ -1,43 +1,43 @@
-### Running batch operations on a files using bash
+### Εκτέλεση δεσμών ενεργειών σε αρχεία
 
-#### What are batch operations
+#### Τι είναι οι δέσμες ενεργειών
 
-Renaming a file using *bash* is fairly easy. You could use the `mv` command for instance.
+Η μετονομασία ενός αρχείου με τη χρήση του *bash* είναι αρκετά εύκολη. Θα μπορούσες να χρησιμοποιήσεις την εντολή `mv` για παράδειγμα.
 
 ```bash
 mv original_file_name.txt new_file_name.txt
 ```
 
-What if you needed to rename a thousand files though?
+Τι κάνεις, όμως, αν χρειαστεί να μετονομάσεις χιλιάδες αρχεία;
 
-A *batch* operation is when you use a command or a set of commands on multiple files.
+Μια *δέσμη* ενεργειών είναι όταν χρησιμοποιείς μια εντολή ή ένα σύνολο εντολών σε πολλά αρχεία.
 
-- Have a go at your first basic batch operation, using any directory that contains a few files. The first thing to try is something trivial. For instance, you can recreate the `ls` command so that;
-   - for every file in the directory,
-   - the name of the file is output to the terminal.
+- Δοκίμασε την πρώτη σου δέσμη ενεργειών, χρησιμοποιώντας οποιονδήποτε κατάλογο που περιέχει μερικά αρχεία. Το πρώτο πράγμα που πρέπει να δοκιμάσεις είναι κάτι εύκολο. Για παράδειγμα, θα μπορούσες να αναδημιουργήσεις την εντολή `ls` έτσι ώστε˙
+   - για κάθε αρχείο στον κατάλογο,
+   - το όνομα του αρχείου να εξέρχεται στο τερματικό.
 
-- The first part is to tell bash you want to operate on all files in the directory.
+- Καταρχάς πρέπει να πεις στο bash ότι θες να εκτελεστεί η ενέργεια σε όλα τα αρχεία του καταλόγου.
 
     ```bash
     for f in *
     ```
 
-- `f` will represent each file name in the directory one after another.
+- ` f ` θα αντιπροσωπεύει κάθε όνομα αρχείου στον κατάλογο το ένα μετά το άλλο.
 
-- Next you need to tell bash what to do with each file name. In this case you want to `echo` the file name to standard output.
+- Στη συνέχεια θα πρέπει να πεις στο bash τι πρέπει να κάνει με το όνομα του κάθε αρχείου. Σ' αυτή την περίπτωση θες να γίνει `echo` το όνομα του αρχείου στην τυπική έξοδο.
 
     ```bash
     do
     echo $f
     ```
 
-- Here the `$` sign is used to state that you're talking about the variable `f`. Lastly you need to tell bash that you're done.
+- Εδώ το σύμβολο `$` χρησιμοποιείται για να δηλώσει ότι μιλάς για τη μεταβλητή `f`. Τέλος πρέπει να πεις στο bash ότι ολοκλήρωσες.
 
     ```bash
     done
     ```
 
-- You can hit *enter* after each command if you like, and bash won't run the whole loop until you type `done`, so the command would look like this in your terminal window:
+- Μπορείς να πατάς το πλήκτρο * enter * μετά από κάθε εντολή, αν θέλεις, και το bash δεν θα εκτελεί ολόκληρο το βρόχο μέχρι να πληκτρολογήσεις ` done `, συνεπώς η εντολή θα φαίνεται έτσι στο τερματικό:
 
     ```bash
     for f in *.txt
@@ -46,38 +46,38 @@ A *batch* operation is when you use a command or a set of commands on multiple f
     > done
     ```
 
-- Alternately, instead of hitting *Enter* after each line, you could use a `;` to seperate the commands.
+- Εναλλακτικά, αντί να πατάς *Enter* μετά από κάθε γραμμή, θα μπορούσες να χρησιμοποιήσεις το `;` για να διαχωρίσεις τις εντολές.
 
     ```bash
     for f in *.txt; do echo $f; done
     ```
 
-#### Manipulating strings.
+#### Χειρισμός (συμβολο)σειρών.
 
-That last command was a little pointless, but you can do much more with batch operations. For instance, what if you wanted to change the name of each of the files, so instead of being called `0.txt` for instance, they get called `0.md`.
+Αυτή η εντολή που δημιούργησες ήταν ίσως λίγο άσκοπη, όμως μπορείς να κάνεις πολλά περισσότερα με τις δέσμες ενεργειών. Για παράδειγμα, θα μπορούσες να αλλάξεις το όνομα κάθε αρχείου, έτσι ώστε αντί να ονομάζεται `O.txt`, να ονομάζεται `0.md`.
 
-- Try this command:
+- Δοκίμασε αυτή την εντολή:
 
     ```bash
     for f in *.txt; do mv "$f" "${f%.txt}.md"; done
     ```
 
-- If you `ls` the contents of the directory, you'll see all the files have been renamed. So how did this work?
+- Αν κάνεις `ls` στα περιεχόμενα του καταλόγου, θα δεις πως όλα τα αρχεία έχουν μετονομαστεί. Με ποιον τρόπο έγινε αυτό;
 
-- The first part `for f in *.txt` tells bash to run the operation on every file (`$f`) with a `.txt.` extension.
+- Το πρώτο μέρος `for f in *.txt` λέει στο bash να εκτελέσει την ενέργεια σε κάθε αρχείο (`$f`) που έχει επέκταση `.txt.`
 
-- Next, `do mv $f` is telling bash to *move* each of those files. Next you need to provide bash with the moved file's new name. To do this you need to remove the `.txt` and replace it with `.md`. Luckily bash has an inbuilt operator to remove the endings of strings. You can use the `%` operator. Try this example to see how it works
+- Στη συνέχεια η εντολή `do mv $f` λέει στο bash να *μετακινήσει* καθένα απ' αυτά τα αρχεία. Κατόπιν θα πρέπει να δώσεις στο bash το νέο όνομα του μετακινούμενου αρχείου. Για να γίνει αυτό θα πρέπει να αφαιρέσεις την επέκταση `.txt` και να την αντικαταστήσεις με `.md`. Ευτυχώς το bash έχει έναν ενσωματωμένο τελεστή που αφαιρεί το τελευταίο μέρος μιας (συμβολο)σειράς. Μπορείς να χρησιμοποιήσεις τον τελεστή `%`. Δοκίμασε αυτό το παράδειγμα για να δεις πώς λειτουργεί
 
     ```bash
     words="Hello World"
     echo ${words%World}
     ```
 
-- You could now end something else onto the end of the string.
+- Τώρα θα μπορούσες να προσθέσεις κάτι άλλο στο τέλος της (συμβολο)σειράς.
 
     ```bash
     echo ${words%World)Moon
     ```
 
-- So the syntax `${f%.txt}.md` replaces all the `.txt` strings with `.md` strings. Incidently, if you use the `#` operator instead of the `%` it will remove a string from the start instead of the end.
+- Έτσι, η εντολή `${f%.txt}.md` αντικαθιστά όλα τα σύμβολα `.txt` με τα σύμβολα `.md`. Παρεμπιπτόντως, η χρήση του τελεστή `#` αντί του `%` θα αφαιρούσε το αρχικό κομμάτι της (συμβολο)σειράς  αντί για το τελικό.
 
