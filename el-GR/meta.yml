@@ -1,9 +1,9 @@
 ---
-title: Running batch operations on files
+title: Εκτέλεση δεσμών ενεργειών σε αρχεία
 hero_image: images/banner.png
-description: perform batch operation on files using *nix systems
+description: εκτέλεσε δέσμες ενεργειών σε αρχεία που χρησιμοποιούν συστήματα *nix
 original_url:
-theme: cc-prototype
+theme: cc-πρωτότυπο
 duration: 1
 listed: false
 ingredient: true
@@ -12,5 +12,5 @@ interests:
 technologies: "nix, bash"
 steps:
   - 
-    title: Batch file operations
+    title: Λειτουργίες αρχείου δέσμης ενεργειών
 
